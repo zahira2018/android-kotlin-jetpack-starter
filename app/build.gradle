@@ -40,9 +40,9 @@ dependencies {
     // Androidx Artifact
     implementation "androidx.appcompat:appcompat:$androidx_appcompat"
     implementation "androidx.core:core-ktx:$androidx_core_ktx"
+    implementation "androidx.constraintlayout:constraintlayout:$androidx_constraintlayout"
     androidTestImplementation "androidx.test:runner:$androidx_test_runner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso"
-    implementation "androidx.constraintlayout:constraintlayout:$androidx_constraintlayout"
 
     // JUnit
     testImplementation "junit:junit:$junit"
