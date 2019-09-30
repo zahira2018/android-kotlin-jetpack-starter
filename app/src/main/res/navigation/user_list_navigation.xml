@@ -13,10 +13,10 @@
         <action
             android:id="@+id/actionDetailFragment"
             app:destination="@id/detailFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:enterAnim="@anim/pull_up_from_bottom"
+            app:exitAnim="@anim/push_out_to_bottom"
+            app:popEnterAnim="@anim/pull_up_from_bottom"
+            app:popExitAnim="@anim/push_out_to_bottom" />
     </fragment>
 
     <fragment
@@ -27,10 +27,10 @@
         <action
             android:id="@+id/actionListFragment"
             app:destination="@id/listFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:enterAnim="@anim/pull_up_from_bottom"
+            app:exitAnim="@anim/push_out_to_bottom"
+            app:popEnterAnim="@anim/pull_up_from_bottom"
+            app:popExitAnim="@anim/push_out_to_bottom" />
         <argument
             android:name="userUUID"
             android:defaultValue="0"
