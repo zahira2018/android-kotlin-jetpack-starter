@@ -33,7 +33,7 @@
             app:popExitAnim="@anim/push_out_to_bottom" />
         <argument
             android:name="userUUID"
-            android:defaultValue="0"
+            android:defaultValue="2"
             app:argType="integer" />
     </fragment>
 
