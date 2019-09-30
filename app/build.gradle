@@ -21,13 +21,14 @@ android {
         }
     }
 
+    // This definition needs for define layout tag in xml
     dataBinding {
         enabled = true
     }
 }
 
 /*
-    1. Make it version variable list alphabetic for easy to read
+    1. Make it version variable list alphabetic for easy to read, except for testing library, group them in the bottom of list (Testing Tools)
     2. Consider to use latest but stable version rather than beta, alpha, or rc version, except for special needed
     3. Please check the latest version androidx and google gradle at https://dl.google.com/dl/android/maven2/index.html
  */
@@ -45,8 +46,6 @@ ext {
     androidx_navigation_ui_ktx_version = '2.1.0'
 //    androidx_preferences_version = '1.1.0'
     androidx_recyclerview = '1.0.0'
-    androidx_test_runner = '1.2.0'
-    androidx_test_espresso = '3.2.0'
 
     // https://github.com/Kotlin/kotlinx.coroutines
     coroutine_version = '1.3.1'
@@ -58,8 +57,6 @@ ext {
 
     // https://github.com/google/gson
     gson_converter = '2.8.5'
-
-    junit = '4.12'
 
     // https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor
     logging_interceptor_version = '4.2.0'
@@ -73,6 +70,11 @@ ext {
     // https://developer.android.com/jetpack/androidx/releases/room
     // Stable version are 2.1.0, release at June 2019
     room_version = '2.2.0-rc01'
+
+    // Testing Tools
+    androidx_test_runner = '1.2.0'
+    androidx_test_espresso = '3.2.0'
+    junit = '4.12'
 }
 
 dependencies {
@@ -92,8 +94,6 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$androidx_navigation_ui_ktx_version"
 //    implementation "androidx.preference:preference:$androidx_preferences_version"
     implementation "androidx.recyclerview:recyclerview:$androidx_recyclerview"
-    androidTestImplementation "androidx.test:runner:$androidx_test_runner"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso"
 
     // Coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
@@ -107,9 +107,6 @@ dependencies {
 
     // Gson Converter
     implementation "com.google.code.gson:gson:$gson_converter"
-
-    // JUnit
-    testImplementation "junit:junit:$junit"
 
     // Kotlin Version
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -126,5 +123,9 @@ dependencies {
     implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
+    // Testing Tools
+    androidTestImplementation "androidx.test:runner:$androidx_test_runner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso"
+    testImplementation "junit:junit:$junit"
 
 }
