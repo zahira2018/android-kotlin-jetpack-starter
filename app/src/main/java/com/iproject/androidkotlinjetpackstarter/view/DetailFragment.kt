@@ -28,14 +28,6 @@ class DetailFragment : Fragment() {
 
         arguments?.let {
             userUUID = DetailFragmentArgs.fromBundle(it).userUUID
-            detail_text.text = userUUID.toString()
-        }
-
-        detail_fab.setOnClickListener {
-            val action = DetailFragmentDirections.actionListFragment()
-            Navigation.findNavController(it).navigate(action)
         }
     }
-
-
 }
