@@ -13,18 +13,24 @@ import kotlinx.android.synthetic.main.fragment_detail.*
 
 class DetailFragment : Fragment() {
 
+    private var userUUID = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_detail, container, false)
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        arguments?.let {
+            userUUID = DetailFragmentArgs.fromBundle(it).userUUID
+            detail_text.text = userUUID.toString()
+        }
+
         detail_fab.setOnClickListener {
             val action = DetailFragmentDirections.actionListFragment()
             Navigation.findNavController(it).navigate(action)

@@ -23,12 +23,10 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         list_fab.setOnClickListener {
             val action = ListFragmentDirections.actionDetailFragment()
+            action.userUUID = 5
             Navigation.findNavController(it).navigate(action)
         }
     }
-
-
 }
