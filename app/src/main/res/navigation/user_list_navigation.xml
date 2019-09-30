@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_list_navigation"
+    app:startDestination="@id/listFragment">
+
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.iproject.androidkotlinjetpackstarter.view.ListFragment"
+        android:label="ListFragment"
+        tools:layout="@layout/fragment_list">
+        <action
+            android:id="@+id/actionDetailFragment"
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/pull_up_from_bottom"
+            app:exitAnim="@anim/push_out_to_bottom"
+            app:popEnterAnim="@anim/pull_up_from_bottom"
+            app:popExitAnim="@anim/push_out_to_bottom" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.iproject.androidkotlinjetpackstarter.view.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail">
+        <action
+            android:id="@+id/actionListFragment"
+            app:destination="@id/listFragment"
+            app:enterAnim="@anim/pull_up_from_bottom"
+            app:exitAnim="@anim/push_out_to_bottom"
+            app:popEnterAnim="@anim/pull_up_from_bottom"
+            app:popExitAnim="@anim/push_out_to_bottom" />
+        <argument
+            android:name="userUUID"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+
+</navigation>
