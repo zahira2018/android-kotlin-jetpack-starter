@@ -71,6 +71,10 @@ ext {
     // Stable version are 2.1.0, release at June 2019
     room_version = '2.2.0-rc01'
 
+    reactivex_rxjava = "2.2.6"
+    reactivex_rxkotlin = "2.3.0"
+    reactivex_rxandroid = "2.1.1"
+
     // Testing Tools
     androidx_test_runner = '1.2.0'
     androidx_test_espresso = '3.2.0'
@@ -101,6 +105,7 @@ dependencies {
     // Glide Image Loader
     implementation "com.github.bumptech.glide:glide:$glide_version"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
 
     // Google Material Design
     implementation "com.google.android.material:material:$google_material_design"
@@ -116,12 +121,20 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
+    // Retrofit Courotines Adapter
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$retrofit_coroutines_adapter_version"
+    // Retrofit RxJava Adapter
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
 
     // Room Database
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+
+    // RX library
+    implementation "io.reactivex.rxjava2:rxjava:$reactivex_rxjava"
+    implementation "io.reactivex.rxjava2:rxkotlin:$reactivex_rxkotlin"
+    implementation "io.reactivex.rxjava2:rxandroid:$reactivex_rxandroid"
 
     // Testing Tools
     androidTestImplementation "androidx.test:runner:$androidx_test_runner"

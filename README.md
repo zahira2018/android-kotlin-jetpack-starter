@@ -19,5 +19,6 @@ master_development = Digunakan untuk mengumpulkan semua branch features yang sud
    Implementasi navigation (part of jetpack component)
 2. features/md-002
    Implementasi Viewmodel, livedata, detailscreen dari list, hanya saja masih dalam bentuk data hardcode
-3.
+3. features/md-003
+   Setting retrofit, rxjava
 
