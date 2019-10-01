@@ -18,4 +18,6 @@ master_development = Digunakan untuk mengumpulkan semua branch features yang sud
 1. features/md-001
    Implementasi navigation (part of jetpack component)
 2. features/md-002
+   Implementasi Viewmodel, livedata, detailscreen dari list, hanya saja masih dalam bentuk data hardcode
+3.
 
