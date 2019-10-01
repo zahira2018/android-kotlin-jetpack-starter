@@ -4,13 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.iproject.androidkotlinjetpackstarter.model.database.GithubUser
 
-class UserViewModel : ViewModel() {
+class DetailViewModel : ViewModel() {
+    val userLiveData = MutableLiveData<GithubUser>()
 
-    val githubUserList = MutableLiveData<List<GithubUser>>()
-    val userListLoading = MutableLiveData<Boolean>()
-    val userListError = MutableLiveData<Boolean>()
-
-    fun refresh() {
+    fun fetch(id: String) {
         val user1 = GithubUser(
             "Ronaldo",
             "1",
@@ -22,11 +19,9 @@ class UserViewModel : ViewModel() {
             "https://www.fcbarcelona.com/photo-resources/2019/05/13/cb6216c0-1086-4ca1-bcc3-9808deb61fd4/mini_Messi-celebraci-gol.jpg?width=1200&height=750"
         )
         val userList = arrayListOf(user1, user2)
-
-        githubUserList.value = userList
-        userListLoading.value = false
-        userListError.value = false
-
+        val result = userList.filter { it.id == id }.map {
+            userLiveData.value = it
+        }
 
     }
 }
