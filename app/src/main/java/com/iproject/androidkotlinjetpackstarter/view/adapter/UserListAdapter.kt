@@ -8,13 +8,16 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.iproject.androidkotlinjetpackstarter.R
 import com.iproject.androidkotlinjetpackstarter.model.database.GithubUser
+import com.iproject.androidkotlinjetpackstarter.model.view.GithubUserView
+import com.iproject.androidkotlinjetpackstarter.util.getProgressDrawable
+import com.iproject.androidkotlinjetpackstarter.util.loadImage
 import com.iproject.androidkotlinjetpackstarter.view.ListFragmentDirections
 import kotlinx.android.synthetic.main.user_list.view.*
 
-class UserListAdapter(val userList: ArrayList<GithubUser>) :
+class UserListAdapter(val userList: ArrayList<GithubUserView>) :
     RecyclerView.Adapter<UserListAdapter.UserViewHolder>() {
 
-    fun updateUserList(newUserList: List<GithubUser>) {
+    fun updateUserList(newUserList: List<GithubUserView>) {
         userList.clear()
         userList.addAll(newUserList)
         notifyDataSetChanged()
@@ -41,8 +44,9 @@ class UserListAdapter(val userList: ArrayList<GithubUser>) :
             }
         }
 
-        fun bindItem(githubUser: GithubUser) {
-            view.user_name_text_list.text = githubUser.login
+        fun bindItem(githubUserView: GithubUserView) {
+            view.user_name_text_list.text = githubUserView.login
+            view.user_image_list.loadImage(githubUserView.avatarUrl, getProgressDrawable(view.context))
         }
 
 

@@ -44,7 +44,7 @@ class ListFragment : Fragment() {
     }
 
     fun observeViewModel() {
-        viewModel.githubUserList.observe(this, Observer { users ->
+        viewModel.githubUserViewList.observe(this, Observer { users ->
             users?.let {
                 list_recycler.visibility = View.VISIBLE
                 userListAdapter.updateUserList(it)
