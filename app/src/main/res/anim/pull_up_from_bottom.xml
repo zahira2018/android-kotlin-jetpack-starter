@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--    @android:integer/config_activityShortDur for default time anim open/close activity and fragment,
+        but it set to private so just use the value
+        <integer name="config_activityShortDur">150</integer>
+        <integer name="config_activityDefaultDur">220</integer>
+-->
 <set xmlns:android="http://schemas.android.com/apk/res/android">
     <translate
-        android:duration="@android:integer/config_longAnimTime"
+        android:duration="150"
         android:fromYDelta="100%"
         android:toYDelta="0%" />
 </set>
