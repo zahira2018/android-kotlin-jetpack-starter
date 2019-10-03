@@ -1,11 +1,10 @@
 package com.iproject.androidkotlinjetpackstarter.api
 
 import com.iproject.androidkotlinjetpackstarter.model.remote.GithubUserResponse
-import io.reactivex.Single
+import retrofit2.Response
 import retrofit2.http.GET
 
-// Use this if using rxjava
-interface UsersApi {
+interface UsersCoApi {
     @GET("users")
-    fun getUsers(): Single<List<GithubUserResponse>>
+    suspend fun getUsersAsync(): Response<List<GithubUserResponse>>
 }
