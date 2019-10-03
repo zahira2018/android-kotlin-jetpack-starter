@@ -58,6 +58,9 @@ ext {
     // https://github.com/google/gson
     gson_converter = '2.8.5'
 
+    // https://insert-koin.io/docs/2.0/getting-started/android/
+    koin_viewmodel_version = '2.0.1'
+
     // https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor
     logging_interceptor_version = '4.2.0'
 
@@ -116,6 +119,9 @@ dependencies {
 
     // Kotlin Version
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // Koin Version
+    implementation "org.koin:koin-android-viewmodel:$koin_viewmodel_version"
 
     // Retrofit and Network Call
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
