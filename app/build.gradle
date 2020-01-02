@@ -88,7 +88,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // Amitshekhar Debug Database (Third Party)
-    // run this command in terminal = adb forward tcp:8080 tcp:8080
+    // run this command in terminal =
     debugImplementation "com.amitshekhar.android:debug-db:$amitshekhar_debug_db"
 
     // Androidx Artifact

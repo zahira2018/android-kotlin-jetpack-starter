@@ -1,5 +1,6 @@
 package com.iproject.androidkotlinjetpackstarter.model.remote
 
+import com.iproject.androidkotlinjetpackstarter.model.view.GithubUserView
 import com.squareup.moshi.Json
 
 data class GithubUserResponse(
@@ -39,5 +40,11 @@ data class GithubUserResponse(
     var type: String? = "",
     @Json(name = "site_admin")
     var site_admin: Boolean? = false
-)
+) {
+    fun GithubUserResponse.toGithubUserView() = GithubUserView(
+        login = login,
+        id = id.toString(),
+        avatarUrl = avatar_url
+    )
+}
 

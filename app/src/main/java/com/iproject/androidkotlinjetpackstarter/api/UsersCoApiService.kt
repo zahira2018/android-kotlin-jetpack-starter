@@ -1,21 +1,34 @@
 package com.iproject.androidkotlinjetpackstarter.api
 
-import com.iproject.androidkotlinjetpackstarter.model.remote.GithubUserResponse
-import retrofit2.Response
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 
-class UsersCoApiService {
+object UsersCoApiService {
 
-    private val BASE_URL = "https://api.github.com/"
+    private const val BASE_URL = "https://api.github.com/"
 
-    private val api = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(MoshiConverterFactory.create())
-        .build()
-        .create(UsersCoApi::class.java)
+    fun <T> create(apiType: Class<T>) =
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .client(httpClient())
+            .build()
+            .create(apiType)
 
-    suspend fun getUsers(): Response<List<GithubUserResponse>> {
-        return api.getUsersAsync()
+    private fun httpClient(): OkHttpClient {
+        val logging = HttpLoggingInterceptor()
+        logging.level = HttpLoggingInterceptor.Level.BODY
+
+        val builder = OkHttpClient.Builder()
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .addInterceptor(logging)
+            .retryOnConnectionFailure(true)
+
+        return builder.build()
     }
 }

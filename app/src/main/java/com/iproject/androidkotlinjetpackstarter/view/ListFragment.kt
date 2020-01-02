@@ -7,19 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.iproject.androidkotlinjetpackstarter.R
 import com.iproject.androidkotlinjetpackstarter.view.adapter.UserListAdapter
 import com.iproject.androidkotlinjetpackstarter.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class ListFragment : Fragment() {
 
-    private lateinit var viewModel: UserViewModel
+    private val viewModel: UserViewModel by viewModel()
+
     private val userListAdapter = UserListAdapter(arrayListOf())
 
     override fun onCreateView(
@@ -32,7 +31,6 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
         viewModel.refresh()
 
         list_recycler.apply {
@@ -44,7 +42,9 @@ class ListFragment : Fragment() {
     }
 
     fun observeViewModel() {
-        viewModel.githubUserViewList.observe(this, Observer { users ->
+//        change "this" with "viewLifecycleOwner" if you use koin
+//        viewModel.githubUserViewList.observe(this, Observer { users ->
+        viewModel.githubUserViewList.observe(viewLifecycleOwner, Observer { users ->
             users?.let {
                 list_recycler.visibility = View.VISIBLE
                 userListAdapter.updateUserList(it)
@@ -52,13 +52,13 @@ class ListFragment : Fragment() {
 
         })
 
-        viewModel.userListError.observe(this, Observer { isError ->
+        viewModel.userListError.observe(viewLifecycleOwner, Observer { isError ->
             isError?.let {
                 list_error.visibility = if (it) View.VISIBLE else View.GONE
             }
         })
 
-        viewModel.userListLoading.observe(this, Observer { isLoading ->
+        viewModel.userListLoading.observe(viewLifecycleOwner, Observer { isLoading ->
             isLoading?.let {
                 if (it) {
                     list_progress_bar.visibility = View.VISIBLE
